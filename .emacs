@@ -291,14 +291,17 @@ For more information, see the function `buffer-menu'."
 ;; Note that auto-complete functions are in .emacs.d/ac/java-mode ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
-(custom-set-variables
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(js3-lazy-operators t)
- '(js3-expr-indent-offset 2)
- '(js3-paren-indent-offset 2)
- '(js3-square-indent-offset 2)
- '(js3-curly-indent-offset 2))
+
+
+(custom-set-variables                                      ;;
+  ;; Your init file should contain only one such instance. ;;
+  ;; If there is more than one, they won't work right.     ;;
+ '(js3-lazy-operators t)                                   ;;
+ '(js3-expr-indent-offset 2)                               ;;
+ '(js3-paren-indent-offset 2)                              ;;
+ '(js3-square-indent-offset 2)                             ;;
+ '(js3-curly-indent-offset 2))                             ;;
+
 
 (setq auto-mode-alist
       (append '(("\\.txt$" . rst-mode)
@@ -313,3 +316,7 @@ For more information, see the function `buffer-menu'."
   "Moves the point to the newly created window after splitting."
   (other-window 1))
 
+(add-to-list 'load-path
+              "~/.emacs.d/yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
