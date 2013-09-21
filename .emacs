@@ -241,11 +241,11 @@ For more information, see the function `buffer-menu'."
 (global-set-key (kbd "C-c p") 'sr-speedbar-select-window)
 (global-set-key (kbd "C-c /") 'comment-or-uncomment-region)
 (global-set-key (kbd "C-c m") 'imenu)
-(global-set-key (kbd "C-c C-v") 'duplicate-current-line-or-region)
+(global-set-key (kbd "C-c C-y") 'duplicate-current-line-or-region)
 (global-set-key (kbd "C-x C-b") 'my-list-buffers)
 
 (global-set-key (kbd "C-c C-r") 'mc/mark-all-in-region)
-(global-set-key (kbd "C-c C-w") 'mc/mark-all-words-like-this)
+(global-set-key (kbd "C-c C-g") 'mc/mark-all-words-like-this)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -320,3 +320,6 @@ For more information, see the function `buffer-menu'."
               "~/.emacs.d/yasnippet")
 (require 'yasnippet)
 (yas-global-mode 1)
+
+
+(require 'init-utils)
