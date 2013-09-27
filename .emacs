@@ -323,3 +323,23 @@ For more information, see the function `buffer-menu'."
 
 
 (require 'init-utils)
+
+;; run php lint when press f8 key
+;; php lint
+(defun phplint-thisfile ()
+(interactive)
+(compile (format "php -l %s" (buffer-file-name))))
+(add-hook 'php-mode-hook
+'(lambda ()
+(local-set-key [f8] 'phplint-thisfile)))
+;; end of php lint
+(defun clean-php-mode ()
+(interactive)
+(php-mode)
+(setq c-basic-offset 2) ; 2 tabs indenting
+(setq indent-tabs-mode nil)
+(setq fill-column 78)
+(c-set-offset 'case-label '+)
+(c-set-offset 'arglist-close 'c-lineup-arglist-operators))
+(c-set-offset 'arglist-intro '+) ; for FAPI arrays and DBTNG
+(c-set-offset 'arglist-cont-nonempty 'c-lineup-math) ; for DBTNG fields and values
