@@ -233,19 +233,6 @@ For more information, see the function `buffer-menu'."
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; Global Keys
-
-(global-set-key (kbd "C-S-v") 'duplicate-line)
-(global-set-key (kbd "C-c =") 'sr-speedbar-open)
-(global-set-key (kbd "C-c -") 'sr-speedbar-close)
-(global-set-key (kbd "C-c p") 'sr-speedbar-select-window)
-(global-set-key (kbd "C-c /") 'comment-or-uncomment-region)
-(global-set-key (kbd "C-c m") 'imenu)
-(global-set-key (kbd "C-c C-y") 'duplicate-current-line-or-region)
-(global-set-key (kbd "C-x C-b") 'my-list-buffers)
-
-(global-set-key (kbd "C-c C-r") 'mc/mark-all-in-region)
-(global-set-key (kbd "C-c C-g") 'mc/mark-all-words-like-this)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -321,33 +308,27 @@ For more information, see the function `buffer-menu'."
 (require 'yasnippet)
 (yas-global-mode 1)
 
+;; Global Keys
+
+(global-set-key (kbd "C-c d") 'duplicate-line)
+(global-set-key (kbd "C-c =") 'sr-speedbar-open)
+(global-set-key (kbd "C-c -") 'sr-speedbar-close)
+(global-set-key (kbd "C-c p") 'sr-speedbar-select-window)
+(global-set-key (kbd "C-c /") 'comment-or-uncomment-region)
+(global-set-key (kbd "C-c m") 'imenu)
+(global-set-key (kbd "C-c C-y") 'duplicate-current-line-or-region)
+(global-set-key (kbd "C-x C-b") 'my-list-buffers)
+
+(global-set-key (kbd "C-c C-r") 'mc/mark-all-in-region)
+(global-set-key (kbd "C-c C-g") 'mc/mark-all-words-like-this)
+
 
 (require 'init-utils)
-
-;; run php lint when press f8 key
-;; php lint
-(defun phplint-thisfile ()
-(interactive)
-(compile (format "php -l %s" (buffer-file-name))))
-(add-hook 'php-mode-hook
-'(lambda ()
-(local-set-key [f8] 'phplint-thisfile)))
-;; end of php lint
-(defun clean-php-mode ()
-(interactive)
-(php-mode)
-(setq c-basic-offset 2) ; 2 tabs indenting
-(setq indent-tabs-mode nil)
-(setq fill-column 78)
-(c-set-offset 'case-label '+)
-(c-set-offset 'arglist-close 'c-lineup-arglist-operators))
-(c-set-offset 'arglist-intro '+) ; for FAPI arrays and DBTNG
-(c-set-offset 'arglist-cont-nonempty 'c-lineup-math) ; for DBTNG fields and values
-
 
 ;;;;;;;;;;;;;;;;
 ;; Vim Like % ;;
 ;;;;;;;;;;;;;;;;
+
 (defun my-shell-command-on-current-file (command &optional output-buffer error-buffer)
   "Run a shell command on the current file (or marked dired files).
 In the shell command, the file(s) will be substituted wherever a '%' is."
@@ -362,3 +343,8 @@ In the shell command, the file(s) will be substituted wherever a '%' is."
   (shell-command command output-buffer error-buffer))
 
 (global-set-key (kbd "M-!") 'my-shell-command-on-current-file)
+
+
+ (add-to-list 'load-path "~/.emacs.d/magit-1.2.0/")
+ (require 'magit)
+(require 'mo-git-blame)
