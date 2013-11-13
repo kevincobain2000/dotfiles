@@ -315,7 +315,7 @@ For more information, see the function `buffer-menu'."
 (global-set-key (kbd "C-c -") 'sr-speedbar-close)
 (global-set-key (kbd "C-c p") 'sr-speedbar-select-window)
 (global-set-key (kbd "C-c /") 'comment-or-uncomment-region)
-(global-set-key (kbd "C-c m") 'imenu)
+(global-set-key (kbd "C-x m") 'imenu)
 (global-set-key (kbd "C-c C-y") 'duplicate-current-line-or-region)
 (global-set-key (kbd "C-x C-b") 'my-list-buffers)
 
@@ -345,6 +345,11 @@ In the shell command, the file(s) will be substituted wherever a '%' is."
 (global-set-key (kbd "M-!") 'my-shell-command-on-current-file)
 
 
- (add-to-list 'load-path "~/.emacs.d/magit-1.2.0/")
- (require 'magit)
+(add-to-list 'load-path "~/.emacs.d/magit-1.2.0/")
+(require 'magit)
 (require 'mo-git-blame)
+
+(require 'popwin)
+(popwin-mode 1)
+
+
