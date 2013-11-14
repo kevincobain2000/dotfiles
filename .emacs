@@ -321,6 +321,7 @@ For more information, see the function `buffer-menu'."
 
 (global-set-key (kbd "C-c C-r") 'mc/mark-all-in-region)
 (global-set-key (kbd "C-c C-g") 'mc/mark-all-words-like-this)
+(global-set-key (kbd "C-c C-j") 'mc/mark-next-word-like-this)
 
 
 (require 'init-utils)
@@ -344,12 +345,25 @@ In the shell command, the file(s) will be substituted wherever a '%' is."
 
 (global-set-key (kbd "M-!") 'my-shell-command-on-current-file)
 
-
+;;;;;;;;;;;;;;;;;;;;;
+;; Ma Git & Mo Git ;;
+;;;;;;;;;;;;;;;;;;;;;
 (add-to-list 'load-path "~/.emacs.d/magit-1.2.0/")
 (require 'magit)
 (require 'mo-git-blame)
 
+;;;;;;;;;;;;
+;; popwin ;;
+;;;;;;;;;;;;
 (require 'popwin)
 (popwin-mode 1)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; For Shell When the Cursor keeps on moving to center ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(remove-hook 'comint-output-filter-functions
+             'comint-postoutput-scroll-to-bottom)
 
+
+;; Ignore Duplicate Commands Emacs Shell
+(setq comint-input-ignoredups t)
